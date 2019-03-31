@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Page Title</title>
+</head>
+<body>
+
+<h1 class="title">This is a Heading</h1>
+<p>This is a paragraph.</p>
+
+</body>
+<script>
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var res = JSON.parse(this.responseText);
+        document.querySelector(".title").innerHTML = res.title;
+    }
+  };
+  xhttp.open("GET", "https://jsonplaceholder.typicode.com/todos/1", true);
+  xhttp.send();
+}
+loadDoc();
+</script>
+</html>
